@@ -1,0 +1,42 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Rua:</strong>
+  <%= @place.rua %>
+</p>
+
+<p>
+  <strong>Bairro:</strong>
+  <%= @place.bairro %>
+</p>
+
+<p>
+  <strong>Cidade:</strong>
+  <%= @place.cidade %>
+</p>
+
+<p>
+  <strong>Numero:</strong>
+  <%= @place.numero %>
+</p>
+
+<p>
+  <strong>Latitude:</strong>
+  <%= @place.latitude %>
+</p>
+
+<p>
+  <strong>Longitude:</strong>
+  <%= @place.longitude %>
+</p>
+
+<p>
+  <strong>Descricao:</strong>
+  <%= @place.descricao %>
+</p>
+
+<%= link_to 'Edit', edit_place_path(@place) %> |
+<%= link_to 'Back', places_path %>
+
+
+<%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@place.latitude}%2C#{@place.longitude}" %>
