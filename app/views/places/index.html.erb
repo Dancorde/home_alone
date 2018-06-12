@@ -37,3 +37,11 @@
 <br>
 
 <%= link_to 'New Place', new_place_path %>
+
+<br>
+
+<h2>Importar dados</h2>
+<%= form_tag import_places_path, multipart: true do %>
+  <%= file_field_tag :file %>
+  <%= submit_tag "Importar" %>
+<% end %>

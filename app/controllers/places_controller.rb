@@ -61,6 +61,11 @@ class PlacesController < ApplicationController
     end
   end
 
+  def import
+    Place.import(params[:file])
+    redirect_to places_url, notice: 'Lista carregada.'
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_place
