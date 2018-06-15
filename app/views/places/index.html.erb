@@ -5,10 +5,7 @@
 <table>
   <thead>
     <tr>
-      <th>Rua</th>
-      <th>Bairro</th>
-      <th>Cidade</th>
-      <th>Numero</th>
+      <th>Endereco</th>
       <th>Latitude</th>
       <th>Longitude</th>
       <th>Descricao</th>
@@ -19,10 +16,7 @@
   <tbody>
     <% @places.each do |place| %>
       <tr>
-        <td><%= place.rua %></td>
-        <td><%= place.bairro %></td>
-        <td><%= place.cidade %></td>
-        <td><%= place.numero %></td>
+        <td><%= place.endereco %></td>
         <td><%= place.latitude %></td>
         <td><%= place.longitude %></td>
         <td><%= place.descricao %></td>

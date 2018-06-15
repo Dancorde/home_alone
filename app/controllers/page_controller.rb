@@ -3,6 +3,6 @@ class PageController < ApplicationController
   end
 
   def list
-    @places = Place.page(params[:page]).per(10).all
+    @places = Place.page(params[:page]).per(12).all
   end
 end

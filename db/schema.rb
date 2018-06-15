@@ -16,10 +16,7 @@ ActiveRecord::Schema.define(version: 20180608114157) do
   enable_extension "plpgsql"
 
   create_table "places", force: :cascade do |t|
-    t.string "rua"
-    t.string "bairro"
-    t.string "cidade"
-    t.integer "numero"
+    t.string "endereco"
     t.float "latitude"
     t.float "longitude"
     t.string "descricao"
