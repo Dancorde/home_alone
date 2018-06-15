@@ -3,9 +3,9 @@
     <div class="card-header text-center">
       Mapa
     </div>
-    <%= image_tag "http://maps.google.com/maps/api/staticmap?size=350x200&sensor=false&zoom=15&markers=#{place.latitude}%2C#{place.longitude}", :class => "card-img-top" %>
+    <%= image_tag "http://maps.googleapis.com/maps/api/staticmap?center=#{place.latitude},#{place.longitude}&markers=#{place.latitude},#{place.longitude}&zoom=18&size=640x400&key=#{Rails.application.secrets.google_places_key}", class: 'card-img-top'%>
+
     <div class="card-block">
-      <!-- <h4 class="card-title"></h4> -->
       <p class="card-text"><%= place.descricao %></p>
       <p class="card-text">Lat: <%= place.latitude %>, Long: <%= place.longitude %></p>
     </div>
