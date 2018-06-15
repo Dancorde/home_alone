@@ -1,4 +1,27 @@
-<h1>Page#home</h1>
-<p>Find me in app/views/page/home.html.erb</p>
+<div class="text-center">
+  <h1 class="home-title" style="font-size: 80px;">Home Alone</h1>
 
-<%= link_to 'Ver todos', list_path %>
+  <%= form_tag({:controller => "places"}, {:class => ""}) do %>
+    <div class="row form-group">
+      <div class="col-12">
+        <%= text_field_tag :endereco, params[:endereco], :class => 'form-control', :placeholder => "Insira o endereço" %>
+      </div>
+    </div>
+
+    <div class="row form-group">
+      <div class="col-8">
+        <%= text_field_tag :endereco, params[:endereco], :class => 'form-control', :placeholder => "Escolha uma preferência" %>
+      </div>
+      <div class="col-4">
+        <%= text_field_tag :distancia, params[:distancia], :class => 'form-control', :placeholder => "Raio de busca" %>
+      </div>
+    </div>
+
+    <%= submit_tag "Buscar", :class => "btn btn-primary btn-lg", :style => "width: 300px;" %>
+  <% end %>
+
+  <br>
+  
+  <%= link_to 'Ver todos', list_path, :class => "btn btn-primary btn-lg", :style => "width: 300px;" %>
+
+</div>
