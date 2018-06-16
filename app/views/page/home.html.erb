@@ -1,7 +1,7 @@
 <div class="text-center">
   <h1 class="home-title" style="font-size: 80px;">Home Alone</h1>
 
-  <%= form_tag({:controller => "places"}, {:class => ""}) do %>
+  <%= form_tag({:action=>"show", :controller => "page"}, {:class => ""}) do %>
     <div class="row form-group">
       <div class="col-12">
         <%= text_field_tag :endereco, params[:endereco], :class => 'form-control', :placeholder => "Insira o endereço" %>
@@ -10,10 +10,10 @@
 
     <div class="row form-group">
       <div class="col-8">
-        <%= text_field_tag :endereco, params[:endereco], :class => 'form-control', :placeholder => "Escolha uma preferência" %>
+        <%= select_tag :tipo, options_for_select([['Bares', "bar"], ['Restaurantes', "restaurant"]]), :class => 'form-control', :placeholder => "Escolha uma preferência" %>
       </div>
       <div class="col-4">
-        <%= text_field_tag :distancia, params[:distancia], :class => 'form-control', :placeholder => "Raio de busca" %>
+        <%= number_field_tag :distancia, params[:distancia], :class => 'form-control', :placeholder => "Raio de busca (m)" %>
       </div>
     </div>
 
@@ -21,7 +21,7 @@
   <% end %>
 
   <br>
-  
+
   <%= link_to 'Ver todos', list_path, :class => "btn btn-primary btn-lg", :style => "width: 300px;" %>
 
 </div>

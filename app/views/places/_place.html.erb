@@ -1,13 +1,11 @@
 <div class='col-sm-6 col-lg-4'>
   <div class="card">
     <div class="card-header text-center">
-      <%= place.endereco %>
+      <%= place.address %>
     </div>
     <%= image_tag "http://maps.googleapis.com/maps/api/staticmap?center=#{place.latitude},#{place.longitude}&markers=#{place.latitude},#{place.longitude}&zoom=18&size=640x400&key=#{Rails.application.secrets.google_places_key}", class: 'card-img-top'%>
-
     <div class="card-block">
       <p class="card-text"><%= place.descricao %></p>
-      <p class="card-text">Lat: <%= place.latitude %>, Long: <%= place.longitude %></p>
     </div>
   </div>
   <br>

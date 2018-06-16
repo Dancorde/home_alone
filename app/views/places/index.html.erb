@@ -16,7 +16,7 @@
   <tbody>
     <% @places.each do |place| %>
       <tr>
-        <td><%= place.endereco %></td>
+        <td><%= place.address %></td>
         <td><%= place.latitude %></td>
         <td><%= place.longitude %></td>
         <td><%= place.descricao %></td>
@@ -29,6 +29,10 @@
 </table>
 
 <br>
+
+<div class="container pagination justify-content-center">
+  <%= paginate @places %>
+</div>
 
 <%= link_to 'New Place', new_place_path %>
 
