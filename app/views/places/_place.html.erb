@@ -3,7 +3,9 @@
     <div class="card-header text-center">
       <%= place.address %>
     </div>
+    <%= link_to place do %>
     <%= image_tag "http://maps.googleapis.com/maps/api/staticmap?center=#{place.latitude},#{place.longitude}&markers=#{place.latitude},#{place.longitude}&zoom=18&size=640x400&key=#{Rails.application.secrets.google_places_key}", class: 'card-img-top'%>
+    <% end %>
     <div class="card-block">
       <p class="card-text"><%= place.descricao %></p>
     </div>

@@ -32,12 +32,15 @@
   <%= link_to 'Nova busca', root_path, :class => "btn btn-primary btn-lg", :style => "width: 300px;" %>
 </div>
 
+<div class="row">
+  <p><%= params[:endereco] %></p>
+  <% if @results.first %>
+    <p><%= @results.first.coordinates[0] %></p>
+    <p><%= @results.first.coordinates[1] %></p>
+  <% end %>
+</div>
+<% if @results.first %>
 
-<script type="text/javascript">
-  handler = Gmaps.build('Google');
-  handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
-  markers = handler.addMarkers(<%=raw @hash.to_json %>);
-  handler.bounds.extendWith(markers);
-  handler.fitMapToBounds();
-  });
-</script>
+<input id="latResult" type="hidden" name="" value="<%= @results.first.coordinates[0] %>">
+<input id="lngResult" type="hidden" name="" value="<%= @results.first.coordinates[1] %>">
+<% end %>

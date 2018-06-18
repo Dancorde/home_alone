@@ -10,7 +10,7 @@
 
     <div class="row form-group">
       <div class="col-8">
-        <%= select_tag :tipo, options_for_select([['Bares', "bar"], ['Restaurantes', "restaurant"]]), :class => 'form-control', :placeholder => "Escolha uma preferência" %>
+        <%= select_tag :tipo, options_for_select([['Bares', "bar"], ['Restaurantes', "restaurant"]]), :class => 'form-control', :prompt => "Escolha uma preferência" %>
       </div>
       <div class="col-4">
         <%= number_field_tag :distancia, params[:distancia], :class => 'form-control', :placeholder => "Raio de busca (m)" %>

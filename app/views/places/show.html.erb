@@ -1,27 +1,72 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Endereço:</strong>
-  <%= @place.address %>
-</p>
+<div class="row">
+  <div class="col-7">
+    <div class="card">
+      <div class="card-header text-center">
+        <%= @place.address %>
+      </div>
+      <%= image_tag "http://maps.googleapis.com/maps/api/staticmap?center=#{@place.latitude},#{@place.longitude}&markers=#{@place.latitude},#{@place.longitude}&zoom=18&size=640x400&key=#{Rails.application.secrets.google_places_key}", class: 'card-img-top'%>
+      <div class="card-block">
+        <p class="card-text"><%= @place.descricao %></p>
+      </div>
+    </div>
+  </div>
+  <div class="col-5">
+    <%= form_tag({:action=>"show", :controller => "places"}, method: "get") do %>
+      <%= select_tag :tipo, options_for_select([
+        ['Bares', "bar"],
+        ['Restaurantes', "restaurant"],
+        ['Hospitais', "hospital"],
+        ['Bancos', "bank"]
+        ]), :class => 'form-control', :prompt => "Escolha uma preferência" %>
+      <%= submit_tag("Procurar") %>
+    <% end %>
+    <table class="table">
+      <thead>
+        <tr>
+          <th style="width: 20%">Nome</th>
+          <th style="width: 80%">Endereço</th>
+        </tr>
+      </thead>
 
-<p>
-  <strong>Latitude:</strong>
-  <%= @place.latitude %>
-</p>
+      <tbody>
+        <% @locations.each do |place| %>
+          <tr>
+            <td><%= place[:name] %></td>
+            <td><%= place[:vicinity] %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
 
-<p>
-  <strong>Longitude:</strong>
-  <%= @place.longitude %>
-</p>
 
-<p>
-  <strong>Descricao:</strong>
-  <%= @place.descricao %>
-</p>
+<br>
 
 <%= link_to 'Edit', edit_place_path(@place) %> |
-<%= link_to 'Back', places_path %>
+<%= link_to 'Back', list_path %>
+
+<br>
+<br>
 
 
-<%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@place.latitude}%2C#{@place.longitude}" %>
+
+<br>
+
+<!-- <div style='width: 800px;'>
+  <div id="map" style='width: 800px; height: 400px;'></div>
+</div> -->
+
+<br><br>
+
+
+<script type="text/javascript">
+  handler = Gmaps.build('Google');
+  handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
+  markers = handler.addMarkers(<%=raw @hash.to_json %>);
+  handler.bounds.extendWith(markers);
+  handler.fitMapToBounds();
+  });
+</script>

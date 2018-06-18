@@ -7,7 +7,7 @@ class PageController < ApplicationController
   end
 
   def show
-  
+    @results = Geocoder.search(params[:endereco])
   end
 
   private

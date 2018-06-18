@@ -1,7 +1,5 @@
 jQuery ->
   markersArray = []
-  lat_field = $('#place_latitude')
-  lng_field = $('#place_longitude')
 
   window.initMap = ->
     if $('#map').size() > 0
@@ -13,13 +11,6 @@ jQuery ->
       map.addListener 'click', (e) ->
         placeMarkerAndPanTo e.latLng, map
         updateFields e.latLng
-
-      $('#find-on-map').click (e) ->
-        e.preventDefault()
-        placeMarkerAndPanTo {
-          lat: parseFloat lat_field.val(), 10
-          lng: parseFloat lng_field.val(), 10
-        }, map
 
     placeMarkerAndPanTo {
       lat: -22.0124251
@@ -34,7 +25,3 @@ jQuery ->
 
     map.panTo latLng
     markersArray.push marker
-
-  updateFields = (latLng) ->
-    lat_field.val latLng.lat()
-    lng_field.val latLng.lng()

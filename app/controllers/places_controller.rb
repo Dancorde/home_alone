@@ -10,6 +10,16 @@ class PlacesController < ApplicationController
   # GET /places/1
   # GET /places/1.json
   def show
+    url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=#{@place.latitude},#{@place.longitude}&radius=2000&type=#{params[:tipo]}&key=#{Rails.application.secrets.google_places_key}"
+    uri = URI(url)
+    http_call = Net::HTTP.get(uri)
+    response = JSON.parse(http_call, {:symbolize_names => true})
+    @locations = response[:results]
+    @hash = Gmaps4rails.build_markers(@locations) do |place, marker|
+      marker.lat place[:geometry][:location][:lat]
+      marker.lng place[:geometry][:location][:lng]
+      marker.infowindow place[:name]
+    end
   end
 
   # GET /places/new
