@@ -1,7 +1,7 @@
 <div class="text-center">
   <h1 class="home-title" style="font-size: 80px;">Home Alone</h1>
 
-  <%= form_tag({:action=>"show", :controller => "page"}, {:class => ""}) do %>
+  <%= form_tag({:action=>"show", :controller => "page"}, method: "get") do %>
     <div class="row form-group">
       <div class="col-12">
         <%= text_field_tag :endereco, params[:endereco], :class => 'form-control', :placeholder => "Insira o endereço" %>

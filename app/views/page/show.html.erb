@@ -34,13 +34,13 @@
 
 <div class="row">
   <p><%= params[:endereco] %></p>
+
   <% if @results.first %>
-    <p><%= @results.first.coordinates[0] %></p>
-    <p><%= @results.first.coordinates[1] %></p>
+    <p>(<%= @results.first.coordinates[0] %>, <%= @results.first.coordinates[1] %>)</p>
   <% end %>
 </div>
-<% if @results.first %>
 
-<input id="latResult" type="hidden" name="" value="<%= @results.first.coordinates[0] %>">
-<input id="lngResult" type="hidden" name="" value="<%= @results.first.coordinates[1] %>">
+<% if @results.first %>
+  <input id="latResult" type="hidden" value="<%= @results.first.coordinates[0] %>">
+  <input id="lngResult" type="hidden" value="<%= @results.first.coordinates[1] %>">
 <% end %>
