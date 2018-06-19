@@ -9,20 +9,24 @@
     </div>
   </div>
   <div class="col-md-4">
-    <table class="table">
+    <table id="proximos" class="table table-striped table-bordered" cellspacing="0" width="100%">
       <thead>
         <tr>
-          <th scope="col">Nome</th>
-          <th scope="col">Endereço</th>
+          <th style="width: 20%">Nome</th>
+          <th style="width: 80%">Endereço</th>
         </tr>
       </thead>
+
       <tbody>
-        <tr>
-          <td>nome</td>
-          <td>endereco</td>
-        </tr>
+        <% @locations.each do |place| %>
+          <tr>
+            <td><%= place[:name] %></td>
+            <td><%= place[:vicinity] %></td>
+          </tr>
+        <% end %>
       </tbody>
     </table>
+    <%= paginate @locations %>
   </div>
 </div>
 

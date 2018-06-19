@@ -19,7 +19,7 @@ class PlacesController < ApplicationController
     uri = URI(url)
     http_call = Net::HTTP.get(uri)
     response = JSON.parse(http_call, {:symbolize_names => true})
-    @locations = Kaminari.paginate_array( response[:results]).page(params[:page]).per(5)
+    @locations = Kaminari.paginate_array(response[:results]).page(params[:page]).per(5)
     @hash = Gmaps4rails.build_markers(@locations) do |place, marker|
       marker.lat place[:geometry][:location][:lat]
       marker.lng place[:geometry][:location][:lng]

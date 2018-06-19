@@ -10,14 +10,19 @@
 
     <div class="row form-group">
       <div class="col-8">
-        <%= select_tag :tipo, options_for_select([['Bares', "bar"], ['Restaurantes', "restaurant"]]), :class => 'form-control', :prompt => "Escolha uma preferência" %>
+        <%= select_tag :tipo, options_for_select([
+          ['Bares', "bar"],
+          ['Restaurantes', "restaurant"],
+          ['Hospitais', "hospital"],
+          ['Bancos', "bank"]
+          ]), :class => 'form-control', :prompt => "Escolha uma preferência" %>
       </div>
       <div class="col-4">
         <%= number_field_tag :distancia, params[:distancia], :class => 'form-control', :placeholder => "Raio de busca (m)" %>
       </div>
     </div>
 
-    <%= submit_tag "Buscar", :class => "btn btn-primary btn-lg", :style => "width: 300px;" %>
+    <%= submit_tag "Buscar", :id => "find-on-map", :class => "btn btn-primary btn-lg", :style => "width: 300px;" %>
   <% end %>
 
   <br>
