@@ -10,8 +10,14 @@ class PageController < ApplicationController
   end
 
   def show
-    @results = Geocoder.search(params[:endereco])
-    url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=#{@results.first.coordinates[0]},#{@results.first.coordinates[1]}&radius=#{params[:distancia]}&type=#{params[:tipo]}&key=#{Rails.application.secrets.google_places_key}"
+    if params[:endereco] != ""
+      @results = Geocoder.search(params[:endereco])
+      distancia = params[:distancia]
+    else
+      @results = Geocoder.search("São Carlos")
+      distancia = 500
+    end
+    url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=#{@results.first.coordinates[0]},#{@results.first.coordinates[1]}&radius=#{distancia}&type=#{params[:tipo]}&key=#{Rails.application.secrets.google_places_key}"
     uri = URI(url)
     http_call = Net::HTTP.get(uri)
     response = JSON.parse(http_call, {:symbolize_names => true})

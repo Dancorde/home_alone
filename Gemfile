@@ -11,8 +11,7 @@ gem 'gmaps4rails'
 gem 'bootstrap', '~> 4.0.0.alpha3'
 gem 'roo'
 gem 'kaminari'
-gem 'rails-assets-jquery', source: 'https://rails-assets.org'
-gem 'rails-assets-datatables', source: 'https://rails-assets.org'
+
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.6'
