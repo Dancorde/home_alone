@@ -16,6 +16,8 @@
         <tr>
           <th style="width: 20%">Nome</th>
           <th style="width: 80%">Endereço</th>
+          <th style="width: 80%">Latitude</th>
+          <th style="width: 80%">Longitude</th>
         </tr>
       </thead>
 
@@ -24,6 +26,8 @@
           <tr>
             <td><%= place[:name] %></td>
             <td><%= place[:vicinity] %></td>
+            <td><%= place[:geometry][:location][:lat] %></td>
+            <td><%= place[:geometry][:location][:lng] %></td>
           </tr>
         <% end %>
       </tbody>

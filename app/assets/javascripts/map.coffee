@@ -24,13 +24,24 @@ jQuery ->
           lng: parseFloat lng_field.val(), 10
         }, map
 
+      $('#busca tbody').on 'click', 'tr', ->
+        if $(this).hasClass('selected')
+          $(this).removeClass 'selected'
+        else
+          table.$('tr.selected').removeClass 'selected'
+          $(this).addClass 'selected'
+        placeMarkerAndPanTo {
+          lat: parseFloat table.row(this).data()[2], 10
+          lng: parseFloat table.row(this).data()[3], 10
+        }, map
+
     placeMarkerAndPanTo {
       lat: parseFloat $('#latResult').val(), 10
       lng: parseFloat $('#lngResult').val(), 10
     }, map
 
   placeMarkerAndPanTo = (latLng, map) ->
-    markersArray.pop().setMap(null) while(markersArray.length)
+    markersArray.pop().setMap(null) while(markersArray.length > 1)
     marker = new google.maps.Marker
       position: latLng
       map: map

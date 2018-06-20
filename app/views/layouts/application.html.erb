@@ -19,7 +19,20 @@
     </div>
     <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.10.18/sl-1.2.6/datatables.min.js"></script>
     <script type="text/javascript">
-      $('#busca').DataTable({
+      var table = $('#busca').DataTable({
+        "lengthMenu": [[5, 10, 25, 50, -1], [5, 10, 25, 50, "Todos"]],
+        "columnDefs": [
+            {
+                "targets": [ 2 ],
+                "visible": false,
+                "searchable": false
+            },
+            {
+                "targets": [ 3 ],
+                "visible": false,
+                "searchable": false
+            }
+        ],
         "language": {
           "lengthMenu": "Mostrar _MENU_ locais",
           search: "Pesquisar: ",
@@ -33,6 +46,18 @@
           }
         }
       });
+      // $('#busca tbody').on( 'click', 'tr', function () {
+      //   if ( $(this).hasClass('selected') ) {
+      //       $(this).removeClass('selected');
+      //   }
+      //   else {
+      //       table.$('tr.selected').removeClass('selected');
+      //       $(this).addClass('selected');
+      //   }
+      //   lat = table.row( this ).data()[2];
+      //   lng = table.row( this ).data()[3];
+      //   alert( lat + ", " + lng );
+      // });
     </script>
   </body>
 </html>
