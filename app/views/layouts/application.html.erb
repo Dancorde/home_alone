@@ -17,5 +17,22 @@
     <div class="container">
       <%= yield %>
     </div>
+    <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.10.18/sl-1.2.6/datatables.min.js"></script>
+    <script type="text/javascript">
+      $('#busca').DataTable({
+        "language": {
+          "lengthMenu": "Mostrar _MENU_ locais",
+          search: "Pesquisar: ",
+          "zeroRecords": "Nada encontrado!",
+          "info": "Página _PAGE_ de _PAGES_",
+          "infoEmpty": "Nenhum local disponível",
+          "infoFiltered": "(_MAX_ locais filtrados)",
+          "paginate": {
+            "previous": "<<",
+            "next": ">>"
+          }
+        }
+      });
+    </script>
   </body>
 </html>
