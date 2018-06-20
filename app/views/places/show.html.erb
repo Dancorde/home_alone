@@ -1,18 +1,24 @@
 <p id="notice"><%= notice %></p>
 
 <div class="row">
-  <div class="col-md-7">
+  <div class="col-md-6">
     <div class="card">
       <div class="card-header text-center">
         <%= @place.address %>
       </div>
-      <%= image_tag "http://maps.googleapis.com/maps/api/staticmap?center=#{@place.latitude},#{@place.longitude}&markers=#{@place.latitude},#{@place.longitude}&zoom=18&size=640x400&key=#{Rails.application.secrets.google_places_key}", class: 'card-img-top'%>
+      <div style='width: 100%;'>
+        <div id="map" style='width: 100%; height: 400px;' class="card-img-top"></div>
+      </div>
+      <div>
+        <input id="latResult" type="hidden" value="<%= @place.latitude %>">
+        <input id="lngResult" type="hidden" value="<%= @place.longitude %>">
+      </div>
       <div class="card-block">
         <p class="card-text"><%= @place.descricao %></p>
       </div>
     </div>
   </div>
-  <div class="col-md-5">
+  <div class="col-md-6">
     <%= form_tag({:action=>"show", :controller => "places"}, method: "get") do %>
     <div class="row">
       <div class="col-md-12 text-center">
@@ -42,8 +48,10 @@
     <table id="proximos" class="table table-striped table-bordered" cellspacing="0" width="100%">
       <thead>
         <tr>
-          <th style="width: 20%">Nome</th>
-          <th style="width: 80%">Endereço</th>
+          <th style="width: 25%">Nome</th>
+          <th style="width: 75%">Endereço</th>
+          <th style="width: 80%">Latitude</th>
+          <th style="width: 80%">Longitude</th>
         </tr>
       </thead>
 
@@ -52,26 +60,14 @@
           <tr>
             <td><%= place[:name] %></td>
             <td><%= place[:vicinity] %></td>
+            <td><%= place[:geometry][:location][:lat] %></td>
+            <td><%= place[:geometry][:location][:lng] %></td>
           </tr>
         <% end %>
       </tbody>
     </table>
-    <%= paginate @locations %>
-    
   </div>
 </div>
-
-<br>
-
-<%= link_to 'Edit', edit_place_path(@place) %> |
-<%= link_to 'Back', list_path %>
-
-
-<br>
-
-<!-- <div style='width: 800px;'>
-  <div id="map" style='width: 800px; height: 400px;'></div>
-</div> -->
 
 <br><br>
 

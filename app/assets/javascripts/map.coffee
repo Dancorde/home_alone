@@ -13,26 +13,26 @@ jQuery ->
         zoom: 15
       }
 
-      # map.addListener 'click', (e) ->
-      #   placeMarkerAndPanTo e.latLng, map
-      #   updateFields e.latLng
-
-      $('#find-on-map').click (e) ->
-        e.preventDefault()
-        placeMarkerAndPanTo {
-          lat: parseFloat lat_field.val(), 10
-          lng: parseFloat lng_field.val(), 10
-        }, map
-
       $('#busca tbody').on 'click', 'tr', ->
         if $(this).hasClass('selected')
           $(this).removeClass 'selected'
         else
-          table.$('tr.selected').removeClass 'selected'
+          table_busca.$('tr.selected').removeClass 'selected'
           $(this).addClass 'selected'
         placeMarkerAndPanTo {
-          lat: parseFloat table.row(this).data()[2], 10
-          lng: parseFloat table.row(this).data()[3], 10
+          lat: parseFloat table_busca.row(this).data()[2], 10
+          lng: parseFloat table_busca.row(this).data()[3], 10
+        }, map
+
+      $('#proximos tbody').on 'click', 'tr', ->
+        if $(this).hasClass('selected')
+          $(this).removeClass 'selected'
+        else
+          table_proximos.$('tr.selected').removeClass 'selected'
+          $(this).addClass 'selected'
+        placeMarkerAndPanTo {
+          lat: parseFloat table_proximos.row(this).data()[2], 10
+          lng: parseFloat table_proximos.row(this).data()[3], 10
         }, map
 
     placeMarkerAndPanTo {
@@ -48,7 +48,3 @@ jQuery ->
 
     map.panTo latLng
     markersArray.push marker
-
-  updateFields = (latLng) ->
-    lat_field.val latLng.lat()
-    lng_field.val latLng.lng()
