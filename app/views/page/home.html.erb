@@ -11,10 +11,14 @@
     <div class="row form-group">
       <div class="col-8">
         <%= select_tag :tipo, options_for_select([
+          ['Academias', "gym"],
           ['Bares', "bar"],
-          ['Restaurantes', "restaurant"],
+          ['Bancos', "bank"],
+          ['Farmácias', "pharmacy"],
           ['Hospitais', "hospital"],
-          ['Bancos', "bank"]
+          ['Igrejas', "church"],
+          ['Lavanderias', "laundry"],
+          ['Restaurantes', "restaurant"]
           ]), :class => 'form-control', :prompt => "Escolha uma preferência" %>
       </div>
       <div class="col-4">

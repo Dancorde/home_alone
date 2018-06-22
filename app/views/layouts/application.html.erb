@@ -73,6 +73,21 @@
           }
         }
       });
+      $('#lista').DataTable({
+        "lengthMenu": [[5, 10, 25, 50, -1], [5, 10, 25, 50, "Todos"]],
+        "language": {
+          "lengthMenu": "Mostrar _MENU_ locais",
+          search: "Pesquisar: ",
+          "zeroRecords": "Nada encontrado!",
+          "info": "Página _PAGE_ de _PAGES_",
+          "infoEmpty": "Nenhum local disponível",
+          "infoFiltered": "(_MAX_ locais filtrados)",
+          "paginate": {
+            "previous": "<<",
+            "next": ">>"
+          }
+        }
+      });
     </script>
   </body>
 </html>
