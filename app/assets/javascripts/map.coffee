@@ -42,9 +42,15 @@ jQuery ->
 
   placeMarkerAndPanTo = (latLng, map) ->
     markersArray.pop().setMap(null) while(markersArray.length > 1)
+    if markersArray.length == 0
+      image = "http://maps.google.com/mapfiles/ms/icons/blue-dot.png"
+    else
+      image = "http://maps.google.com/mapfiles/ms/icons/red-dot.png"
+
     marker = new google.maps.Marker
       position: latLng
       map: map
+      icon: image
 
     map.panTo latLng
     markersArray.push marker
