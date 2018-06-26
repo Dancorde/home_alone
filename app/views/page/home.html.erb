@@ -1,5 +1,8 @@
 <div class="text-center">
-  <h1 class="home-title" style="font-size: 80px;">Home Alone</h1>
+  <!-- <h1 class="home-title" style="font-size: 80px;">Home Alone</h1> -->
+  <%= image_tag("logo.png", height: '180', width: '750') %>
+
+  <br><br>
 
   <%= form_tag({:action=>"show", :controller => "page"}, method: "get") do %>
     <div class="row form-group">
